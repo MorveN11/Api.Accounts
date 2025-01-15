@@ -4,7 +4,7 @@ using SharedKernel.Domain;
 
 namespace Infrastructure.Database.Configurations.Abstractions;
 
-public abstract class BaseRegisterMap<TEntity> : IEntityTypeConfiguration<TEntity>
+public abstract class RegisterConfiguration<TEntity> : IEntityTypeConfiguration<TEntity>
     where TEntity : Register
 {
     protected abstract void ConfigureEntity(EntityTypeBuilder<TEntity> builder);
@@ -21,7 +21,7 @@ public abstract class BaseRegisterMap<TEntity> : IEntityTypeConfiguration<TEntit
             .Property(e => e.UpdatedAt)
             .HasColumnType("timestamptz")
             .HasDefaultValueSql("CURRENT_TIMESTAMP")
-            .ValueGeneratedOnAddOrUpdate();
+            .ValueGeneratedOnUpdate();
 
         _ = builder.Property(e => e.IsActive).HasDefaultValue(true).ValueGeneratedOnAdd();
 

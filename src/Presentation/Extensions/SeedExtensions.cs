@@ -11,8 +11,6 @@ public static class SeedExtensions
         await using ApplicationDbContext dbContext =
             scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
-        await dbContext.Database.EnsureCreatedAsync();
-
         await dbContext.SeedDataAsync(scope);
     }
 }

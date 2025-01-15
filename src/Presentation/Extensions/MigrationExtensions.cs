@@ -12,8 +12,6 @@ public static class MigrationExtensions
         await using ApplicationDbContext dbContext =
             scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
-        await dbContext.Database.EnsureCreatedAsync();
-
         await dbContext.Database.MigrateAsync();
     }
 }

@@ -1,4 +1,3 @@
-using System.Collections;
 using Application.Abstractions.Data;
 using Infrastructure.Seed.Abstractions;
 using MediatR;
@@ -56,11 +55,10 @@ public sealed class ApplicationDbContext(
             .ServiceProvider.GetServices<ISeedEntity>()
             .OrderBy(entity => entity.Priority);
 
-        IEnumerable<Task> tasks = seedEntities.Select(seedEntity =>
-            Task.Run(() => seedEntity.SeedData(this))
-        );
-
-        await Task.WhenAll(tasks);
+        foreach (ISeedEntity seedEntity in seedEntities)
+        {
+            seedEntity.SeedData(this);
+        }
 
         await SaveChangesAsync();
     }
