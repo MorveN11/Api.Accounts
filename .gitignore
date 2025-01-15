@@ -1,0 +1,11 @@
+.containers/
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+.idea/
+.git/
+node_modules/
+*.binlog
+*.DotSettings.user

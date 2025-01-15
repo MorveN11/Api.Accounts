@@ -1,0 +1,36 @@
+name: CI/CD_PUSH
+
+on:
+  push:
+    branches:
+      - '**'
+      - '!main'
+
+jobs:
+  validate-code:
+    name: Restore, Build and Publish Project 
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        dotnet_version: [9.x]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Get the last commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ matrix.dotnet_version }}
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Publish
+        run: dotnet publish --configuration Release --no-restore --no-build
