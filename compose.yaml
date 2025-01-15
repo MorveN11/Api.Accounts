@@ -1,12 +1,4 @@
 services:
-  seq:
-    image: datalust/seq:2024.3
-    container_name: seq
-    environment:
-      - ACCEPT_EULA=Y
-    ports:
-      - "8081:80"
-
   postgres:
     image: postgres:17
     container_name: postgres
@@ -46,8 +38,6 @@ services:
     ports:
       - "5000:8080"
     depends_on:
-      seq:
-        condition: service_started
       postgres:
         condition: service_healthy
       redis:

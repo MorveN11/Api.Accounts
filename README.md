@@ -52,8 +52,7 @@
 
 ## Ports - localhost
 
-- **API**: 5000
-  - **Swagger**: 5000/swagger/index.html
-- **Seq**: 8081
+- **API**: (Docker: 5000) | (Launch Settings: 5001)
+  - **Swagger**: /swagger/index.html
 - **Postgres**: 5432
 - **Redis**: 6379
