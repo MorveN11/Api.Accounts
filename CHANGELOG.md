@@ -1,5 +1,12 @@
 # Changelog
 
+# [1.1.0](https://github.com/MorveN11/Api.Accounts/compare/v1.0.0...v1.1.0) (2025-01-15)
+
+
+### Features
+
+* add entities and ef core migrations ([99c8b09](https://github.com/MorveN11/Api.Accounts/commit/99c8b0989b32ff386da9533005fb1e4f7eb6ef6a))
+
 # 1.0.0 (2025-01-15)
 
 
