@@ -1,8 +1,6 @@
-using Application.Abstractions.Messaging;
+namespace Application.Queries.Users.GetById;
 
-namespace Application.Commands.Users.Create;
-
-public sealed class CreateUserCommand : ICommand<Guid>
+public sealed record UserResponse
 {
     public required Guid Id { get; init; }
 
@@ -11,4 +9,8 @@ public sealed class CreateUserCommand : ICommand<Guid>
     public required string Pic { get; init; }
 
     public required string PicPath { get; init; }
+
+    public required DateTime CreatedAt { get; init; }
+
+    public required DateTime? UpdatedAt { get; init; }
 }

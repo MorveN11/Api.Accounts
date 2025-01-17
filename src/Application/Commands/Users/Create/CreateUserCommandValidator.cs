@@ -6,7 +6,9 @@ internal sealed class CreateUserCommandValidator : AbstractValidator<CreateUserC
 {
     public CreateUserCommandValidator()
     {
-        RuleFor(x => x.Name).MaximumLength(100).When(x => x != null);
+        RuleFor(x => x.Id).NotEmpty();
+
+        RuleFor(x => x.Name).MaximumLength(100).When(x => x.Name != null);
 
         RuleFor(x => x.Pic).NotEmpty();
 

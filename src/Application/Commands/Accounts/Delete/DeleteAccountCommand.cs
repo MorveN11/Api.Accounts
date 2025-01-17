@@ -1,3 +1,5 @@
+using Application.Abstractions.Messaging;
+
 namespace Application.Commands.Accounts.Delete;
 
-public sealed class DeleteAccountCommand { }
+public sealed record DeleteAccountCommand(Guid AccountId) : ICommand;

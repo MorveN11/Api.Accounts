@@ -1,6 +1,6 @@
 using Application.Commands.Accounts.Create;
 using MediatR;
-using Presentation.Extensions;
+using Microsoft.AspNetCore.OutputCaching;
 using Presentation.Infrastructure;
 using SharedKernel.Results;
 
@@ -19,7 +19,12 @@ internal sealed class Create : IEndpoint
     {
         app.MapPost(
                 "api/accounts",
-                async (Request request, ISender sender, CancellationToken cancellationToken) =>
+                async (
+                    Request request,
+                    ISender sender,
+                    IOutputCacheStore cacheStore,
+                    CancellationToken cancellationToken
+                ) =>
                 {
                     var command = new CreateAccountCommand
                     {
@@ -27,9 +32,16 @@ internal sealed class Create : IEndpoint
                         UserId = request.UserId,
                     };
 
-                    Result result = await sender.Send(command, cancellationToken);
+                    Result<Guid> result = await sender.Send(command, cancellationToken);
 
-                    return result.Match(Results.Created, CustomResults.Problem);
+                    if (result.IsFailure)
+                    {
+                        return CustomResults.Problem(result);
+                    }
+
+                    await cacheStore.EvictByTagAsync(Tags.Accounts, cancellationToken);
+
+                    return Results.Ok(result.Value);
                 }
             )
             .WithTags(Tags.Accounts)

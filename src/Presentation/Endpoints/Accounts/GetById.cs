@@ -14,15 +14,15 @@ internal sealed class GetById : IEndpoint
                 "api/accounts/{id:guid}",
                 async (Guid id, ISender sender, CancellationToken cancellationToken) =>
                 {
-                    var command = new GetAccountByIdQuery(id);
+                    var query = new GetAccountByIdQuery(id);
 
-                    Result<AccountResponse> result = await sender.Send(command, cancellationToken);
+                    Result<AccountResponse> result = await sender.Send(query, cancellationToken);
 
                     return result.Match(Results.Ok, CustomResults.Problem);
                 }
             )
             .WithTags(Tags.Accounts)
             .AddCache(Tags.Accounts)
-            .WithSummary("Get account by id");
+            .WithSummary("Get account by ID");
     }
 }

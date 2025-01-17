@@ -1,34 +1,27 @@
+using Application.Abstractions.Data;
 using Application.Abstractions.Messaging;
-using Application.Commands.Accounts.Create;
+using Domain.Users;
 using SharedKernel.Results;
+using SharedKernel.Time;
 
 namespace Application.Commands.Users.Create;
 
-internal sealed class CreateUserCommandHandler : ICommandHandler<CreateAccountCommand, Guid>
+internal sealed class CreateUserCommandHandler(
+    IApplicationDbContext context,
+    IDateTimeProvider timeProvider
+) : ICommandHandler<CreateUserCommand, Guid>
 {
-    public Task<Result<Guid>> Handle(
-        CreateAccountCommand request,
+    public async Task<Result<Guid>> Handle(
+        CreateUserCommand request,
         CancellationToken cancellationToken
     )
     {
-        // User? user = await context
-        //     .Users.AsNoTracking()
-        //     .SingleOrDefaultAsync(u => u.Id == request.UserId, cancellationToken);
-        //
-        // if (user is null)
-        // {
-        //     return Result.Failure<Guid>(UserErrors.NotFound(request.UserId));
-        // }
-        //
-        // CreateAccountCommandConverter converter = new(timeProvider);
-        //
-        // Account account = converter.Convert(request);
-        //
-        // context.Accounts.Add(account);
-        //
-        // await context.SaveChangesAsync(cancellationToken);
-        //
-        // return account.Id;
-        return Task.FromResult(Result.Success(Guid.NewGuid()));
+        User user = new CreateUserCommandConverter(timeProvider).Convert(request);
+
+        context.Users.Add(user);
+
+        await context.SaveChangesAsync(cancellationToken);
+
+        return user.Id;
     }
 }

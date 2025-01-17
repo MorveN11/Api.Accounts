@@ -7,9 +7,9 @@ public sealed class User : Entity
 {
     public string? Name { get; set; }
 
-    public required string Pic { get; set; }
+    public required string Pic { get; init; }
 
-    public required string PicPath { get; set; }
+    public required string PicPath { get; init; }
 
     public IList<Account> Accounts { get; init; } = [];
 }

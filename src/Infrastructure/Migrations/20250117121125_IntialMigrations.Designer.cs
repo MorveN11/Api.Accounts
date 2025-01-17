@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250117012259_IntialMigrations")]
+    [Migration("20250117121125_IntialMigrations")]
     partial class IntialMigrations
     {
         /// <inheritdoc />
@@ -88,7 +88,6 @@ namespace Infrastructure.Migrations
                         .HasColumnName("is_active");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)")
                         .HasColumnName("name");

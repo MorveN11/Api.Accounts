@@ -85,7 +85,6 @@ namespace Infrastructure.Migrations
                         .HasColumnName("is_active");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)")
                         .HasColumnName("name");

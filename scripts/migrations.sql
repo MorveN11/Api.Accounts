@@ -8,10 +8,10 @@ START TRANSACTION;
 
 DO $EF$
 BEGIN
-    IF NOT EXISTS(SELECT 1 FROM public."__EFMigrationsHistory" WHERE "migration_id" = '20250117012259_IntialMigrations') THEN
+    IF NOT EXISTS(SELECT 1 FROM public."__EFMigrationsHistory" WHERE "migration_id" = '20250117121125_IntialMigrations') THEN
     CREATE TABLE public.users (
         id uuid NOT NULL,
-        name character varying(100) NOT NULL,
+        name character varying(100),
         pic text NOT NULL,
         pic_path text NOT NULL,
         created_at timestamptz NOT NULL DEFAULT (CURRENT_TIMESTAMP),
@@ -24,7 +24,7 @@ END $EF$;
 
 DO $EF$
 BEGIN
-    IF NOT EXISTS(SELECT 1 FROM public."__EFMigrationsHistory" WHERE "migration_id" = '20250117012259_IntialMigrations') THEN
+    IF NOT EXISTS(SELECT 1 FROM public."__EFMigrationsHistory" WHERE "migration_id" = '20250117121125_IntialMigrations') THEN
     CREATE TABLE public.accounts (
         id uuid NOT NULL,
         balance numeric(18,2) NOT NULL,
@@ -40,16 +40,16 @@ END $EF$;
 
 DO $EF$
 BEGIN
-    IF NOT EXISTS(SELECT 1 FROM public."__EFMigrationsHistory" WHERE "migration_id" = '20250117012259_IntialMigrations') THEN
+    IF NOT EXISTS(SELECT 1 FROM public."__EFMigrationsHistory" WHERE "migration_id" = '20250117121125_IntialMigrations') THEN
     CREATE INDEX ix_accounts_user_id ON public.accounts (user_id);
     END IF;
 END $EF$;
 
 DO $EF$
 BEGIN
-    IF NOT EXISTS(SELECT 1 FROM public."__EFMigrationsHistory" WHERE "migration_id" = '20250117012259_IntialMigrations') THEN
+    IF NOT EXISTS(SELECT 1 FROM public."__EFMigrationsHistory" WHERE "migration_id" = '20250117121125_IntialMigrations') THEN
     INSERT INTO public."__EFMigrationsHistory" (migration_id, product_version)
-    VALUES ('20250117012259_IntialMigrations', '9.0.0');
+    VALUES ('20250117121125_IntialMigrations', '9.0.0');
     END IF;
 END $EF$;
 COMMIT;

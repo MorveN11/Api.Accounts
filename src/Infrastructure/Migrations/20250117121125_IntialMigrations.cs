@@ -20,7 +20,7 @@ namespace Infrastructure.Migrations
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
-                    name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
                     pic = table.Column<string>(type: "text", nullable: false),
                     pic_path = table.Column<string>(type: "text", nullable: false),
                     created_at = table.Column<DateTime>(type: "timestamptz", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
