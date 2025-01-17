@@ -4,7 +4,7 @@ using SharedKernel.Domain;
 
 namespace Infrastructure.Database.Configurations.Abstractions;
 
-public abstract class RegisterConfiguration<TEntity> : IEntityTypeConfiguration<TEntity>
+internal abstract class RegisterConfiguration<TEntity> : IEntityTypeConfiguration<TEntity>
     where TEntity : Register
 {
     protected abstract void ConfigureEntity(EntityTypeBuilder<TEntity> builder);

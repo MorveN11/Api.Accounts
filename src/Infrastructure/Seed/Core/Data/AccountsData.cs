@@ -15,7 +15,6 @@ internal sealed class AccountsData(IDateTimeProvider timeProvider)
             new Account
             {
                 Id = AccountsId.One,
-                AccountNumber = "123456",
                 Balance = 1000.00m,
                 UserId = UsersId.One,
                 CreatedAt = timeProvider.UtcNow,
@@ -23,7 +22,6 @@ internal sealed class AccountsData(IDateTimeProvider timeProvider)
             new Account
             {
                 Id = AccountsId.Two,
-                AccountNumber = "234567",
                 Balance = 1000.00m,
                 UserId = UsersId.One,
                 CreatedAt = timeProvider.UtcNow,
@@ -31,7 +29,6 @@ internal sealed class AccountsData(IDateTimeProvider timeProvider)
             new Account
             {
                 Id = AccountsId.Three,
-                AccountNumber = "345678",
                 Balance = 1000.00m,
                 UserId = UsersId.Two,
                 CreatedAt = timeProvider.UtcNow,
@@ -39,7 +36,6 @@ internal sealed class AccountsData(IDateTimeProvider timeProvider)
             new Account
             {
                 Id = AccountsId.Four,
-                AccountNumber = "456789",
                 Balance = 1000.00m,
                 UserId = UsersId.Two,
                 CreatedAt = timeProvider.UtcNow,

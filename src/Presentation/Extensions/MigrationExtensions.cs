@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Presentation.Extensions;
 
-public static class MigrationExtensions
+internal static class MigrationExtensions
 {
     public static async Task ApplyMigrations(this IApplicationBuilder app)
     {

@@ -5,10 +5,11 @@ namespace Domain.Users;
 
 public sealed class User : Entity
 {
-    public required string Name { get; set; }
-    public required string LastName { get; set; }
+    public string? Name { get; set; }
 
-    public required string Email { get; init; }
+    public required string Pic { get; set; }
+
+    public required string PicPath { get; set; }
 
     public IList<Account> Accounts { get; init; } = [];
 }

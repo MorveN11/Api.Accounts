@@ -8,12 +8,11 @@ internal sealed class UserConfiguration : EntityConfiguration<User>
 {
     protected override void ConfigureEntity(EntityTypeBuilder<User> builder)
     {
-        builder.Property(u => u.Name).IsRequired().HasMaxLength(100);
+        builder.Property(u => u.Name).HasMaxLength(100);
 
-        builder.Property(u => u.LastName).IsRequired().HasMaxLength(100);
+        builder.Property(u => u.Pic).IsRequired();
 
-        builder.Property(u => u.Email).IsRequired().HasMaxLength(255);
-        builder.HasIndex(u => u.Email).IsUnique();
+        builder.Property(u => u.PicPath).IsRequired();
 
         builder
             .HasMany(u => u.Accounts)

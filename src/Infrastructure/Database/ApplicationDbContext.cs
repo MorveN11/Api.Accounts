@@ -1,4 +1,6 @@
 using Application.Abstractions.Data;
+using Domain.Accounts;
+using Domain.Users;
 using Infrastructure.Seed.Abstractions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +14,9 @@ public sealed class ApplicationDbContext(
     IPublisher publisher
 ) : DbContext(options), IApplicationDbContext
 {
+    public DbSet<User> Users { get; set; }
+    public DbSet<Account> Accounts { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);

@@ -30,12 +30,6 @@ namespace Infrastructure.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("id");
 
-                    b.Property<string>("AccountNumber")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
-                        .HasColumnName("account_number");
-
                     b.Property<decimal>("Balance")
                         .HasColumnType("decimal(18,2)")
                         .HasColumnName("balance");
@@ -53,7 +47,7 @@ namespace Infrastructure.Migrations
                         .HasColumnName("is_active");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .ValueGeneratedOnAddOrUpdate()
+                        .ValueGeneratedOnUpdate()
                         .HasColumnType("timestamptz")
                         .HasColumnName("updated_at")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
@@ -63,16 +57,12 @@ namespace Infrastructure.Migrations
                         .HasColumnName("user_id");
 
                     b.HasKey("Id")
-                        .HasName("pk_account");
-
-                    b.HasIndex("AccountNumber")
-                        .IsUnique()
-                        .HasDatabaseName("ix_account_account_number");
+                        .HasName("pk_accounts");
 
                     b.HasIndex("UserId")
-                        .HasDatabaseName("ix_account_user_id");
+                        .HasDatabaseName("ix_accounts_user_id");
 
-                    b.ToTable("account", "public");
+                    b.ToTable("accounts", "public");
                 });
 
             modelBuilder.Entity("Domain.Users.User", b =>
@@ -88,23 +78,11 @@ namespace Infrastructure.Migrations
                         .HasColumnName("created_at")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
-                        .HasColumnName("email");
-
                     b.Property<bool>("IsActive")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("boolean")
                         .HasDefaultValue(true)
                         .HasColumnName("is_active");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)")
-                        .HasColumnName("last_name");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -112,20 +90,26 @@ namespace Infrastructure.Migrations
                         .HasColumnType("character varying(100)")
                         .HasColumnName("name");
 
+                    b.Property<string>("Pic")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("pic");
+
+                    b.Property<string>("PicPath")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("pic_path");
+
                     b.Property<DateTime?>("UpdatedAt")
-                        .ValueGeneratedOnAddOrUpdate()
+                        .ValueGeneratedOnUpdate()
                         .HasColumnType("timestamptz")
                         .HasColumnName("updated_at")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.HasKey("Id")
-                        .HasName("pk_user");
+                        .HasName("pk_users");
 
-                    b.HasIndex("Email")
-                        .IsUnique()
-                        .HasDatabaseName("ix_user_email");
-
-                    b.ToTable("user", "public");
+                    b.ToTable("users", "public");
                 });
 
             modelBuilder.Entity("Domain.Accounts.Account", b =>
@@ -135,7 +119,7 @@ namespace Infrastructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_account_user_user_id");
+                        .HasConstraintName("fk_accounts_users_user_id");
 
                     b.Navigation("User");
                 });

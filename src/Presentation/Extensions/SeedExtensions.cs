@@ -2,7 +2,7 @@ using Infrastructure.Database;
 
 namespace Presentation.Extensions;
 
-public static class SeedExtensions
+internal static class SeedExtensions
 {
     public static async Task SeedData(this IApplicationBuilder app)
     {

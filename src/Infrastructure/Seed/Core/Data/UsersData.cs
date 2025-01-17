@@ -15,16 +15,16 @@ internal sealed class UsersData(IDateTimeProvider timeProvider) : SeedEntity<Use
             {
                 Id = UsersId.One,
                 Name = "Joe",
-                LastName = "Doe",
-                Email = "joe.doe@email.com",
+                Pic = "",
+                PicPath = "/home/morven/code/systems-integration/face_recognition/faces/",
                 CreatedAt = timeProvider.UtcNow,
             },
             new User
             {
                 Id = UsersId.Two,
                 Name = "William",
-                LastName = "Smith",
-                Email = "william.smith@email.com",
+                Pic = "",
+                PicPath = "/home/morven/code/systems-integration/face_recognition/faces/",
                 CreatedAt = timeProvider.UtcNow,
             },
         ];

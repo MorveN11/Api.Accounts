@@ -1,3 +1,6 @@
 namespace Presentation.Endpoints;
 
-public static class Tags { }
+internal static class Tags
+{
+    public const string Accounts = "Accounts";
+}
