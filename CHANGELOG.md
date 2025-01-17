@@ -1,5 +1,12 @@
 # Changelog
 
+# [1.4.0](https://github.com/MorveN11/Api.Accounts/compare/v1.3.0...v1.4.0) (2025-01-17)
+
+
+### Features
+
+* finish crud for bank accounts and users ([cab96fa](https://github.com/MorveN11/Api.Accounts/commit/cab96fa8f2e898e88784c7167cf0684d03a32768))
+
 # [1.3.0](https://github.com/MorveN11/Api.Accounts/compare/v1.2.0...v1.3.0) (2025-01-17)
 
 
