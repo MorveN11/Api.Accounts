@@ -1,5 +1,12 @@
 # Changelog
 
+# [1.5.0](https://github.com/MorveN11/Api.Accounts/compare/v1.4.0...v1.5.0) (2025-01-17)
+
+
+### Features
+
+* finish integration with face recognition ([ee0513b](https://github.com/MorveN11/Api.Accounts/commit/ee0513b389e40183fad1346c49f7930764d583f9))
+
 # [1.4.0](https://github.com/MorveN11/Api.Accounts/compare/v1.3.0...v1.4.0) (2025-01-17)
 
 
