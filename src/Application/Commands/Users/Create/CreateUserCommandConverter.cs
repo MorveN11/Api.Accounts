@@ -11,6 +11,7 @@ internal sealed class CreateUserCommandConverter(IDateTimeProvider timeProvider)
     {
         return new User
         {
+            Id = from.Id,
             Name = from.Name,
             Pic = from.Pic,
             PicPath = from.PicPath,
