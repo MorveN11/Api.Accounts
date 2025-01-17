@@ -1,5 +1,13 @@
 # Changelog
 
+# [1.3.0](https://github.com/MorveN11/Api.Accounts/compare/v1.2.0...v1.3.0) (2025-01-17)
+
+
+### Features
+
+* add first enpoints ([53d0d08](https://github.com/MorveN11/Api.Accounts/commit/53d0d089d0dfa06bae8f2ae07d5539a2fba969a0))
+* update migrations.sql ([fae9000](https://github.com/MorveN11/Api.Accounts/commit/fae9000db5752612c7e6c36ebe5b7afba152c992))
+
 # [1.2.0](https://github.com/MorveN11/Api.Accounts/compare/v1.1.0...v1.2.0) (2025-01-15)
 
 
